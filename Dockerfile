@@ -22,6 +22,8 @@ COPY --from=base /usr/src/build/dist ./dist
 
 RUN find dist | grep -E '.d.ts|.js.map|..tsbuildinfo' | xargs rm -rf 
 
+USER node
+ENV PORT=8080
 EXPOSE 8080
 
 CMD ["node", "dist/main.js"]
